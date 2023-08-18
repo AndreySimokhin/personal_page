@@ -26,12 +26,34 @@ function Main(
         <title>{t('ANDREW_PAGE')}</title>
         <meta name="description" content="Charwisd personal page" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/LOGO.png" />
       </Head>
       <main className={styles.main}>
         <div className={styles.content}>
-          <div className={styles.photo}>
-            <Image src={"/profile.png"} priority={true} fill={true} style={{objectFit: "cover", overflow: "hidden"}} sizes="(max-width: 300px) 100vw, (max-width: 300px) 100vw" alt="My photo" />
+          <div className={styles.imageBlock}>
+            <div className={styles.photo}>
+              <div className={styles.photoHolder}>
+                <Image src={"/LOGO.png"} priority={true} fill={true} style={{objectFit: "cover", overflow: "hidden"}} sizes="(max-width: 300px) 100vw, (max-width: 300px) 50vw" alt="My photo" />
+              </div>
+            </div>
+
+            <div className={styles.langBlock}>
+              <div className={styles.langIcon} id={styles.iconOne}>
+                <div className={styles.langIconHolder}>
+                  <Image src={"/python.svg"} priority={true} fill={true} style={{objectFit: "cover", overflow: "hidden"}} sizes="(max-width: 32px) 100vw, (max-width: 32px) 50vw" alt="Python icon" />
+                </div>
+              </div>
+              <div className={styles.langIcon} id={styles.iconTwo}>
+                <div className={styles.langIconHolder}>
+                  <Image src={"/javascript.svg"} priority={true} fill={true} style={{objectFit: "cover", overflow: "hidden"}} sizes="(max-width: 32px) 100vw, (max-width: 32px) 50vw" alt="JavaScript icon" />
+                </div>
+              </div>
+              <div className={styles.langIcon} id={styles.iconThree}>
+                <div className={styles.langIconHolder}>
+                  <Image src={"/C_lang.svg"} priority={true} fill={true} style={{objectFit: "cover", overflow: "hidden"}} sizes="(max-width: 32px) 100vw, (max-width: 32px) 50vw" alt="C lang icon" />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className={styles.description}>

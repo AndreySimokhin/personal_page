@@ -1,4 +1,11 @@
 .main {
+    --icon-1-angle: 90deg;
+    --icon-2-angle: 210deg;
+    --icon-3-angle: 330deg;
+    --spin-time: 10s;
+}
+
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +58,10 @@
     font-family: var(--font);
 }
 
+.imageBlock {
+    position: relative;
+}
+
 .photo {
     position: relative;
     flex-shrink: 0;
@@ -59,33 +70,117 @@
     border: none;
     border-radius: 150px;
     overflow: hidden;
-    animation: glow-photo 3s infinite;
-    animation-timing-function: linear;
+    animation: glow-photo 6s infinite linear;
 }
 
+.photoHolder {
+    animation: glow-photo-hold 6s infinite linear;
+    width: 100%;
+    height: 100%;
+}
+
+.langBlock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+}
+
+.langIcon {
+    position: absolute;
+    height: 64px;
+    width: 64px;
+    border-radius: 16px;
+    border: none;
+    transform-origin: left top;
+    transition: 1s;
+}
+
+.langIconHolder {
+    width: 100%;
+    height: 100%;
+}
+
+#iconOne.langIcon { animation: icon-anim-1 var(--spin-time) infinite linear; }
+#iconTwo.langIcon { animation: icon-anim-2 var(--spin-time) infinite linear; }
+#iconThree.langIcon { animation: icon-anim-3 var(--spin-time) infinite linear; }
+#iconOne.langIcon .langIconHolder { animation: icon-hold-1 var(--spin-time) infinite linear; }
+#iconTwo.langIcon .langIconHolder { animation: icon-hold-2 var(--spin-time) infinite linear; }
+#iconThree.langIcon .langIconHolder { animation: icon-hold-3 var(--spin-time) infinite linear; }
+
+/* .langIcon:hover {
+    transform: rotate(360deg);
+}
+
+.langIcon:hover + .langIcon {
+    animation-play-state: paused;
+} */
+
 @keyframes glow-photo {
-    0%, 100% {
+    0% {
+        transform: rotate(0deg);
         box-shadow:  
-            0px -30px 60px 30px  #f27121,  /* inner */
-            30px 30px 100px 60px  #e94057, /* middle */
-            -30px 30px 140px 90px #8a2387; /* outer */
+            0px -50px 60px 30px  #f27121,
+            50px 50px 60px 30px  #e94057,
+            -50px 50px 60px 30px #8a2387;
     }
     25% {
+        transform: rotate(90deg);
         box-shadow: 
-            30px 30px 60px 30px  #f27121,  /* inner */
-            -30px 30px 100px 60px  #e94057, /* middle */
-            0px -30px 140px 90px #8a2387; /* outer */
+            50px 50px 60px 30px  #f27121,
+            -50px 50px 60px 30px  #e94057,
+            0px -50px 60px 30px #8a2387;
     }
     50% {
+        transform: rotate(180deg);
         box-shadow: 
-            0px 0px 60px 30px  #f27121,  /* inner */
-            0px 0px 100px 60px  #e94057, /* middle */
-            0px 0px 140px 90px #8a2387; /* outer */
+            0px 0px 60px 30px  #f27121,
+            0px 0px 60px 30px  #e94057,
+            0px 0px 60px 30px #8a2387;
     }
     75% {
+        transform: rotate(270deg);
         box-shadow: 
-            -30px 30px 60px 30px  #f27121,  /* inner */
-            0px -30px 100px 60px  #e94057, /* middle */
-            30px 30px 140px 90px #8a2387; /* outer */
+            -50px 50px 60px 30px  #f27121,
+            0px -50px 60px 30px  #e94057,
+            50px 50px 60px 30px #8a2387;
     }
+    100% {
+        transform: rotate(360deg);
+        box-shadow:  
+            0px -50px 60px 30px  #f27121,
+            50px 50px 60px 30px  #e94057,
+            -50px 50px 60px 30px #8a2387;
+    }
+}
+
+@keyframes glow-photo-hold {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+@keyframes icon-anim-1 {
+    from { transform: rotate(var(--icon-1-angle)) translateX(160px); }
+    to { transform: rotate(calc(var(--icon-1-angle) + 360deg)) translateX(160px); }
+}
+@keyframes icon-anim-2 {
+    from { transform: rotate(var(--icon-2-angle)) translateX(160px); }
+    to { transform: rotate(calc(var(--icon-2-angle) + 360deg)) translateX(160px); }
+}
+@keyframes icon-anim-3 {
+    from { transform: rotate(var(--icon-3-angle)) translateX(160px); }
+    to { transform: rotate(calc(var(--icon-3-angle) + 360deg)) translateX(160px); }
+}
+
+@keyframes icon-hold-1 {
+    from { transform: rotate(calc(-1 * var(--icon-1-angle))); }
+    to { transform: rotate(calc(-1 * var(--icon-1-angle) - 360deg)); }
+}
+@keyframes icon-hold-2 {
+    from { transform: rotate(calc(-1 * var(--icon-2-angle))); }
+    to { transform: rotate(calc(-1 * var(--icon-2-angle) - 360deg)); }
+}
+@keyframes icon-hold-3 {
+    from { transform: rotate(calc(-1 * var(--icon-3-angle))); }
+    to { transform: rotate(calc(-1 * var(--icon-3-angle) - 360deg)); }
 }
